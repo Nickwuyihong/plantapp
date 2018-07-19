@@ -1,0 +1,70 @@
+body {
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, Palatino, serif;
+}
+#top {
+    padding-top: 10px;
+    margin-top: 0px;
+    background-color: #40af7e;
+    text-align: center;
+}
+#top h1{
+    color: white;
+}
+#top input{
+    display: inline-block;
+    color: #777777;
+    background-color: #c0e0D0;
+    text-align: left;
+    width: 92%;
+    border:  0;
+    padding: 0.5rem;
+}
+#top button{
+    margin-top: 0.4rem;
+    height: 4rem;
+    width: 100%;
+    border:  0;
+    background-color: #f7f7f7;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #cfcfcf;
+}
+#text img{
+    float:left;
+    height: 50px;
+    width: 80px;
+}
+#text .texttitle{
+    margin-top: 0px;
+    color:  #000000;
+    margin-left: 5.5rem;
+}
+#text .good{
+    float: right;
+    margin-top: -0.9rem;
+    color: #a0a0a0;
+    font-size:  0.1rem;
+}
+#text .resource{
+    float: left;
+    color: #a0a0a0;
+    margin: 0.1rem 0rem 0rem 0.6rem;
+    font-size:  0.1rem;
+}
+#tab .index{
+    float: left;
+    position:  relative;
+    margin:  100% 0px 0px 0px;
+}
+#tab .nearby{
+    position:  relative;
+    margin: 100% 0px 0px 4.5rem;
+}
+#tab .note{
+    position:  relative;
+    float: right;
+    margin: -4rem 0px 0px 0px;
+}
