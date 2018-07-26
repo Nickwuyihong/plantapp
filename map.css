@@ -1,10 +1,15 @@
 body{
-	color: #000;
-	background: #fff;
-	margin:0;
-	padding:0;
-	font-family:Georgia,Palatino,serif;
+    color: #000;
+    background: #fff;
+    margin:0;
+    padding:0;
+    font-family:Georgia,Palatino,serif;
 }
+
+
+#container {width:300px; height: 180px; }  
+
+
 
 #tab .index{
     float: left;

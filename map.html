@@ -2,14 +2,21 @@
 <!-- saved from url=(0033)file:///F:/plantapp/bups/map.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="
+    width=device-width,initial-scale=1.0">
+    
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <script src="vue.js.%E4%B8%8B%E8%BD%BD"></script>
+
     <link rel="stylesheet" type="text/css" href="map.css">
+
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.8&key=您申请的key值"></script> 
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> 
+
 </head>
 <body>
 <div id="top">
-	<h1 style="
+    <h1 style="
     background-color:  #40af7e;
     text-align:  center;
     padding-top: 1.5rem;
@@ -18,10 +25,17 @@
     padding-bottom: 1rem;
 ">附近</h1>
 </div>
-	<p>map</p>
-	
-	
-	
+
+
+
+
+<div id="container"></div> 
+
+
+
+    
+    
+    
 <div id="tab" style="
     padding:  2.5rem;
     border-bottom: 1px solid #bbbbbb;
@@ -51,12 +65,12 @@
    
     <a href="../note/note.html" style="
     text-decoration:  none;
-    color:  #777777;
 ">
         <img class="note" src="../img/note@2x.png">
         <p style="
     position:  relative;
     margin:  -1.25rem 0rem 0rem 15.9rem;
+    color:  #777777;
 ">笔记</p>
     </a>
     
