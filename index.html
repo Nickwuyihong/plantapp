@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)file:///C:/Users/12467/Downloads/plantapp-master/index/index.html -->
+<!-- saved from url=(0045)file:///C:/Users/Nick/Desktop/bups/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <script src="./index_files/vue.js.下载"></script>
-    <link rel="stylesheet" type="text/css" href="./index_files/index.css">
-    <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript" src="index.js"></script>
+
+
+
+
+
 </head>
 <body>
 <div id="top">
     <h1>首页</h1>
-    <input type="text" value="请输入植物名称">
-    <img src="./index_files/search@2x.png" style="
+    <form name="search" onsubmit="return search_wiki()" method="get">
+        <input type="text" value="请输入植物名称" name="plantname">
+        <input type="image" src="../img/search@2x.png" style="
     width: 1rem;
     height: 1rem;
-    margin: -1.4rem 0rem 0rem 0.7rem;
+    margin: -1.9rem 0rem 0rem 0.2rem;
     display: flex;
+    background-color: rgba(0,0,0,0);
 ">
+    </form>
     <br>
     <button type="button" value="login">授权登陆</button>
 </div>
@@ -33,7 +41,7 @@
     display: block;
     height:  3.5rem;
 ">
-    <a href="file:///C:/Users/12467/Downloads/plantapp-master/index/item.url" style="
+    <a href="file:///C:/Users/Nick/Desktop/bups/item.url" style="
     text-decoration:  none;
 ">
          <img src="./index_files/1.jpg">
@@ -60,7 +68,7 @@
     color:  green;
 ">首页</p>
    
-    <a href="file:///C:/Users/12467/Downloads/plantapp-master/map/map.html" style="
+    <a href="../map/map.html" style="
     text-decoration:  none;
 ">
          <img class="nearby" src="./index_files/map@2x.png">
@@ -71,7 +79,7 @@
 ">附近</p>
     </a>
    
-    <a href="file:///C:/Users/12467/Downloads/plantapp-master/note/note.html" style="
+    <a href="../note/note" style="
     text-decoration:  none;
     color:  #777777;
 ">
