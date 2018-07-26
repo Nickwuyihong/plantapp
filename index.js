@@ -1,5 +1,8 @@
-//app.js
-App({
+function wxlogin(){
+
+}
+
+var App = ({
   onLaunch: function () {
     this.Promise = this.getArticles()
     // 登录
@@ -106,8 +109,82 @@ App({
   //   return promise;
   // }
 })
+
+
+
+
+var weixin = {
+    config: {
+        url:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri='+encodeURIComponent("http://43.226.165.24:8000/api/weChatLogin/")+'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect',
+        userInfo:JSON.parse(localStorage.getItem('MY_USER_INFO'))
+    },
+    isweixin: function() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        } else {
+            return false;
+        }
+    },
+    getQueryString: function(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    },
+    getUser : function(code) {
+        $.ajax({
+            type: 'get',
+            url: "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=APP_SECRET&code="+code+"&grant_type=authorization_code",
+            cache:false,
+            async: false,
+            dataType: 'jsonp',
+            jsonp: 'jsonpcallback',
+            success: function(json){
+                localStorage.setItem('MY_USER_INFO',JSON.stringify(json));
+                // document.write("<div>"+JSON.stringify(json)+"</div>");
+                $("#test").html(json[0].openid);
+            },
+            error: function(err) {
+                // console.log(err);
+                $("#error").html(JSON.stringify(err));
+            }
+        })
+    },
+    getUserInfo:function(){
+        if(weixin.config.userInfo != null){
+            return JSON.parse(localStorage.getItem('MY_USER_INFO'));
+        }else{
+            if(weixin.getQueryString('code') != null){ 
+                weixin.getUser(weixin.getQueryString('code'));
+                return JSON.parse(localStorage.getItem('MY_USER_INFO'));
+            }else{
+                window.location.href = weixin.config.url;
+            }
+        }
+    }
+}
+
+
+
+
+
  function search_wiki(){
-  var x = document.form["myFrom"]["plantname"].value;
-  $.get('http://43.226.165.24:8000/api/search/wiki/',{'plantname':x});
-  header
+  console.log('fuxk you!');
+  var x = $("#plantname").val();
+  console.log(x);
+  $.ajax({
+      url:'http://43.226.165.24:8000/api/search/wiki/{' + x + '}' ,
+      data: {},
+      type: "GET",
+      beforeSend: function(xhr){
+          xhr.setRequestHeader("Accept" , "application/json");
+      },
+      success: function(result){
+        console.log("???????");
+      console.log("JSON DATA:" + result);
+      },
+      error: function(error){
+        console.log(error)
+      }
+  });
 }
