@@ -29,7 +29,7 @@
 ">
     </form>
     <br>
-    <button type="button" value="login" onclick="login">授权登陆</button>
+    <button type="button" value="login" v-if="isweixin()" onclick="getUserInfo()">授权登陆</button>
 </div>
 
 <div id="text">
@@ -43,10 +43,10 @@
     display: block;
     height:  3.5rem;
 ">
-    <a href="file:///C:/Users/Nick/Desktop/bups/item.url" style="
+    <a href="www.baidu.com" style="
     text-decoration:  none;
 ">
-         <img src="./index_files/1.jpg">
+         <img src="../img/1.jpg">
             <h3 class="texttitle">测试文章</h3>
             <p class="resource">华农官网 Rytia</p>
             <p class="good">52赞</p>
@@ -55,45 +55,52 @@
     </ol>
 </div>
 
+    
 <div id="tab" style="
-    padding:  2.5rem;
+    padding:  0rem;
     border-bottom: 1px solid #bbbbbb;
+    position: absolute;
     display: block;
-    height:  15.7rem;
-    margin:  0;
+    height: 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+    top: 36.5rem;
+    border-top: 0rem;
+    width: 100%;
 ">
-    <img class="index" src="./index_files/home2@2x.png">
+ 
+    <img class="index" src="../img/home2@2x.png">
     <p style="
-    position:  relative;
-    float:  left;
-    margin: 115% 0rem 0px -2.5rem;
-    color:  green;
+    position: absolute;
+    float: left;
+    margin: 3.8rem 0rem 0px 2.6rem;
+    color: green;
 ">首页</p>
-   
-    <a href="../map/map.html" style="
+
+
+   <a href="../map/map.html" style="
     text-decoration:  none;
 ">
-         <img class="nearby" src="./index_files/map@2x.png">
+    <img class="nearby" src="../img/map@2x.png">
          <p style="
-    position:  relative;
-    margin: -0.5rem 0rem 0rem 8.25rem;
+    position:  absolute;
+    margin: 3.8rem 0rem 0rem 10.9rem;
     color: #777777;
 ">附近</p>
-    </a>
+  </a>  
    
-    <a href="../note/note" style="
+    <a href="../note/note.html" style="
     text-decoration:  none;
-    color:  #777777;
 ">
-        <img class="note" src="./index_files/note@2x.png">
+        <img class="note" src="../img/note@2x.png">
         <p style="
-    position:  relative;
-    margin:  -1.25rem 0rem 0rem 15.9rem;
+    position:  absolute;
+    margin:  3.8rem 0rem 0rem 19rem;
+    color:  #777777;
+    float: right;
 ">笔记</p>
     </a>
     
 </div>
-
 
 
 

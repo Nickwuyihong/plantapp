@@ -7,16 +7,15 @@ body{
 }
 
 #tab .index{
-    float: left;
-    position:  relative;
-    margin: 164% 0px 0px 0px;
+    position:  absolute;
+    margin: 0.5rem 0rem 0rem 2rem;
 }
 #tab .nearby{
-    position:  relative;
-    margin: 164% 0px 0px 4.5rem;
+    position: absolute;
+    margin: 0.6rem 0rem 0rem 10.3rem;
 }
 #tab .note{
-    position:  relative;
+    position:  absolute;
     float: right;
-    margin: -3.87rem 0px 0px 0px;
+    margin: 0.6rem 0rem 0rem 18.5rem;
 }
