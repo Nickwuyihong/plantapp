@@ -14,10 +14,15 @@ window.onLoad = function(){
     AMap.plugin(['AMap.ToolBar','AMap.Driving','AMap.Geolocation'],function(){//异步同时加载多个插件
     	var toolbar = new AMap.ToolBar();
     	map.addControl(toolbar);
+    	
     	var driving = new AMap.Driving();//驾车路线规划
     	driving.search(/*参数*/);
+    	
     	var geolocation = new AMap.Geolocation();
-    	map.addControl(geolocation)
+    	map.addControl(geolocation);
+    	
+    	var walking = new AMap.Walking();//步行路线规划
+    	walking.search(/*参数*/);
     });
 
     var trafficLayer = new AMap.TileLayer.Traffic({

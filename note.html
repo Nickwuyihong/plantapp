@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="note.css">
+    <script src="note.js"></script>
+
+    <script src="../vue.min.js"></script>
+    <script src="../jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <div id="top">
@@ -22,18 +26,29 @@
     text-align: center;
     padding-top: 0.5rem;
     background-color: #f1f1f1;
-    padding-bottom: 1rem;
+    padding-bottom: 0.1rem;
     border-style: hidden;
     display: block;
 ">
-    <input type="text" name="search" value="搜索" style="
+<form name="search" onsubmit="return search_wiki()" method="get">
+     <input type="text" id="plantname"  value="搜索" style="
     margin: auto;
     width: 96%;
     text-align: center;
     height: 2.5rem;
     color: #a0a0a0;
     border-style: hidden;
+    font-style: medium;
 ">
+    <input type="image" src="../img/search2@2x.png" style="
+    width: 1rem;
+    height: 1rem;
+    margin: 0.8rem 0rem 0rem -13.5rem;
+    position: absolute;
+    background-color: rgba(0,0,0,0);
+">
+</form>
+   
 </div>
 
 <div id="text" style="
@@ -46,7 +61,7 @@
     <div class="content" style="
     background-color: #fff;
     width: 98%;
-    height: 3.8rem;
+    height: 6.8rem;
     border-width: 0.5rem;
     border-style: solid;
     border-color: #f1f1f1;
@@ -58,30 +73,33 @@
 ">
         <img src="../img/1.jpg" style="
     float: left;
-    width: 80px;
+    width: 90px;
     height: 50px;
-    margin: 0rem 0rem 0rem 1rem;
+    margin: 0.7rem 0rem 0rem 0.7rem;
     padding: 0;
     border: 0;
     background-color: #000;
+    position: absolute;
 ">
         <p id="title" style="
     color: #000000;
-    font-size: larger;
-    font-style: inherit;
-    margin: 0rem 0rem 0rem 0rem;
-    padding: 0;
-    border: 0;
+    font-size: medium;
+    font-style: normal;
+    position: absolute;
+    margin: 0.5rem 0rem 0rem 6.8rem;
+    font-family: sans-serif;
 ">像撒哈拉植物一样去活</p>
         <p id="source" style="
-    float: left;
-    margin: 1rem 0rem 0rem 0rem;
+    margin: 5.5rem 0rem 0rem 0.5rem;
     color: #a0a0a0;
+    position: absolute;
+    font-size: x-small;
 ">来源： 《今日报》  马德</p>
         <p id="date" style="
     float: right;
-    margin: 0rem 0rem 0rem 0rem;
+    margin: 5.5rem 0.5rem 0rem 0rem;
     color: #a0a0a0;
+    font-size: x-small;
 ">2018/03/25</p>
     </a>
     </div>

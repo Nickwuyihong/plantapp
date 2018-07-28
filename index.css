@@ -39,6 +39,7 @@ body {
     width: 80px;
 }
 #text .texttitle{
+    font-family: sans-serif;
     margin-top: 0px;
     color:  #000000;
     margin-left: 5.5rem;

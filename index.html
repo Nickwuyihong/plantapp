@@ -18,18 +18,18 @@
 <body>
 <div id="top">
     <h1>首页</h1>
-    <form name="search" onsubmit="return search_wiki()" method="get">
+    <!--form name="search" onsubmit="return search_article()" method="get"-->
         <input type="text" value="请输入植物名称" id="plantname">
-        <input type="image" src="../img/search@2x.png" style="
+        <input type="image" src="../img/search@2x.png" onclick="search_article()" style="
     width: 1rem;
     height: 1rem;
     margin: -1.9rem 0rem 0rem 0.2rem;
     display: flex;
     background-color: rgba(0,0,0,0);
 ">
-    </form>
+    <!--/form-->
     <br>
-    <button type="button" value="login" v-if="isweixin()" onclick="getUserInfo()">授权登陆</button>
+    <button type="button" value="login" v-if="weixin.isweixin()" onclick="weixin.getUserInfo()">授权登陆</button>
 </div>
 
 <div id="text">
