@@ -1,0 +1,41 @@
+body {
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, Palatino, serif;
+}
+
+
+#top {
+    padding-top: 10px;
+    margin-top: 0px;
+    background-color: #40af7e;
+    text-align: center;
+}
+
+#top h1{
+    color: white;
+    border: 0;
+    padding: 0;
+    margin: -2.5rem 0rem 0rem 0rem;
+}
+
+#text img{
+    width: 6rem;
+    height: 4rem;
+}
+
+#tab .index{
+    position:  absolute;
+    margin: 0.5rem 0rem 0rem 2rem;
+}
+#tab .nearby{
+    position: absolute;
+    margin: 0.6rem 0rem 0rem 10.3rem;
+}
+#tab .note{
+    position:  absolute;
+    float: right;
+    margin: 0.6rem 0rem 0rem 18.5rem;
+}

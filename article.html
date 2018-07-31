@@ -3,53 +3,25 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
    
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="article.css">
+    <script type="text/javascript" src="article.js"></script>
     <script src="vue.min.js"></script>
     <script src="jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="buttons.css">
 
 
 </head>
-<body onload="load_all_article()">
+<body onload="getdetial()">
 <div id="top">
-    <h1>首页</h1>
-
-    <script>        
-        $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
-        if (e.keyCode == 13) {
-            search_article();
-            //按键信息对象以参数的形式传递进来了
-        //此处编写用户敲回车后的代码
-        }
-    });
-    </script>
-    <!--form name="search" onsubmit="return search_article()" method="get"-->
-        <input type="text" value="请输入植物名称" id="plantname" onfocus="">
-        <input type="image" src="search@2x.png" onclick="search_article()" style="
-    width: 1rem;
-    height: 1rem;
-    margin: -1.9rem 0rem 0rem 0.2rem;
-    display: flex;
-    background-color: rgba(0,0,0,0);
-">
-    <!--/form-->
+    <button class="button button-large button-plain button-border button-circle" onclick="goback()" style="margin: 0rem 19rem 0rem 0rem"><i class="fa fa-reply"></i></button>
+    <h1>文章</h1>
     <br>
-    <button type="button" value="login" v-if="weixin.isweixin()" onclick="weixin.getUserInfo()">授权登陆</button>
 </div>
 
 <div id="text">
-    <ol id="list">
-       <!--  <li>
-    <a href="www.baidu.com">
-         <img src="1.jpg">
-            <h3 class="texttitle">测试文章</h3>
-            <p class="resource">华农官网 Rytia</p>
-            <p class="good">52赞</p>
-    </a>   
-        </li> -->
-    </ol>
+    
 </div>
 
     

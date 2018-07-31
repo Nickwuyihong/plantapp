@@ -1,9 +1,67 @@
 body{
-	color: #000;
-	background: #fff;
-	margin:0;
-	padding:0;
-	font-family:Georgia,Palatino,serif;
+    color: #000;
+    background: #fff;
+    margin:0;
+    padding:0;
+    font-family:Georgia,Palatino,serif;
+}
+
+ol{
+    padding:  0;
+    margin: 0;
+}
+
+li{
+    list-style-type:none;
+}
+
+#text a{
+    background-color: #000000;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+#text img{
+    float: left;
+    width: 90px;
+    height: 50px;
+    margin: 0.7rem 0rem 0rem 0.7rem;
+    padding: 0;
+    border: 0;
+    background-color: #000;
+    position: absolute;
+}
+
+#text .content{
+    background-color: #fff;
+    width: 98%;
+    height: 6.8rem;
+    border-width: 0.5rem;
+    border-style: solid;
+    border-color: #f1f1f1;
+}
+
+#text .title{
+    color: #000000;
+    font-size: medium;
+    font-style: normal;
+    position: absolute;
+    margin: 0.5rem 0rem 0rem 6.8rem;
+    font-family: sans-serif;
+}
+
+#text .source{
+    margin: 5.4rem 0rem 0rem 0.5rem;
+    color: #a0a0a0;
+    position: absolute;
+    font-size: x-small;
+}
+
+#text .date{
+    float: right;
+    margin: 5.5rem 0.5rem 0rem 0rem;
+    color: #a0a0a0;
+    font-size: x-small;
 }
 
 #tab .index{

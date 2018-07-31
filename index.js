@@ -53,29 +53,144 @@ var weixin = {
 
 
 
- function search_article(){
-  console.log('fuxk you!');
-  var x = $("#plantname").val();
-  console.log(x);
+function load_all_article(){
   $.ajax({
-      url:'http://43.226.165.24:8000/api/search/article/{' + x + '}' ,
-      //data: "[]",
+      url:'http://43.226.165.24:8000/api/article',
+      data: "[]",
       type: "GET",
-      dataType: "jsonp",
+      dataType: "text",
       crossDomain: true,
       timeout: 5000,
-      beforeSend: function(xhr){
-        console.log('头');
-          xhr.setRequestHeader("Accept" , "application/json");
+      jsonp: "jsapicallback", //服务端用于接收callback调用的function名的参数
+      jsonpCallback: "success_jsonpCallback",
+      success: function(data){
+      console.log("成功");
+      console.log("JSON DATA:" + data);
+      
+      var row = JSON.parse(data);
+      var str="";
+for(var i = 0; i < row.length; i++){
+            console.log(i);
+            // var newli = document.createElement("li");
+            // newli.setAttribute("id",row[i].id)
+            // var newa = document.createElement("a");
+            // newa.setAttribute("href","www.baidu.com");
+
+            // var para1 = document.createElement("img");
+            // para1.setAttribute("src",row[i].cover);
+            // console.log("cover is:" + row[i].cover);
+
+            // var para2 = document.createElement("h3");
+            // var node2 = document.createTextNode(row[i].title);
+            // para2.setAttribute("class","texttitle");
+            // para2.appendChild(node2);
+            // console.log("title is:" + row[i].title);
+
+            // var para3 = document.createElement("p");
+            // var node3 = document.createTextNode(row[i].source + " " + row.author);
+            // para3.setAttribute("class","resource");
+            // para3.appendChild(node3);
+            // console.log("source is " + row[i].source + row[i].author);
+
+            // var para4 = document.createElement("p");
+            // var node4 = document.createTextNode(row[i].type);
+            // para4.setAttribute("class","good");
+            // para4.appendChild(node4);
+            // console.log("nice is " + row[i].type);
+
+            // newa.appendChild(para1);
+            // newa.appendChild(para2);
+            // newa.appendChild(para3);
+            // newa.appendChild(para4);
+            // newli.appendChild(newa);
+            // document.getElementById("list").appendChild(newli);
+            
+        str = str + '<a href="article.html?id=' + row[i].id + '">'
+        +'<li>'
+        +'<img src="' + row[i].cover + '">'
+        +'<h3 class="texttitle">' + row[i].title + '</h3>'
+        +'<p class="resource">' + row[i].source + " " + row[i].author + '</p>'
+        +'<p class="good">' + row[i].type + '</p>'
+        +'</li>'
+        +'</a>'
+        }
+        $("#list").append(str)
       },
-      success: function(json){
-        console.log("成功");
-      console.log("JSON DATA:" + json);
+      complete:function(XMLHttpRequest,textStatus){
+        console.log("完成");
+        console.log(this.XMLHttpRequest);
+        console.log(this.textStatus);
       },
       error: function(error,data){
         console.log(data);
         console.log('出错啦');
         console.log(error);
       }
+      }).done(function(data,status,xhr){
+        console.log("成功");
+        console.log(data);
+        console.log(status);
+    }).fail(function(data,status,xhr){
+      console.log("错误");
+      console.log(data);
+      console.log(status);
+  });
+}
+
+
+
+
+
+ function search_article(){
+  var x = $("#plantname").val();
+  console.log(x);
+  $.ajax({
+      url:'http://43.226.165.24:8000/api/search/article/' + x,
+      data: "[]",
+      type: "GET",
+      dataType: "text",
+      crossDomain: true,
+      timeout: 5000,
+      jsonp: "jsapicallback", //服务端用于接收callback调用的function名的参数
+      jsonpCallback: "success_jsonpCallback",
+      success: function(json){
+        console.log("成功");
+      console.log("JSON DATA:" + json);
+      
+
+      var row = JSON.parse(json);
+      var str="";
+      for(var i = 0; i < row.length; i++){
+            console.log(i);
+        str = str + '<a href="article.html?id=' + row[i].id + '">'
+        +'<li>'
+        +'<img src="' + row[i].cover + '">'
+        +'<h3 class="texttitle">' + row[i].title + '</h3>'
+        +'<p class="resource">' + row[i].source + " " + row[i].author + '</p>'
+        +'<p class="good">' + row[i].type + '</p>'
+        +'</li>'
+        +'</a>'
+        }
+        $("#list").append(str)
+      },
+
+      complete:function(XMLHttpRequest,textStatus){
+        console.log("完成");
+        console.log(this.XMLHttpRequest);
+        console.log(this.textStatus);
+      },
+      error: function(error,data){
+        console.log(data);
+        console.log('出错啦');
+        console.log(error);
+      }
+      }).done(function(data,status,xhr){
+        console.log("成功");
+        console.log(data);
+        console.log(status);
+    }).fail(function(data,status,xhr){
+      console.log("错误");
+      console.log(data);
+      console.log(status);
   });
 }

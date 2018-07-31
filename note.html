@@ -7,21 +7,22 @@
     <link rel="stylesheet" type="text/css" href="note.css">
     <script src="note.js"></script>
 
-    <script src="../vue.min.js"></script>
-    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="vue.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
 </head>
-<body>
+<body onload="load_all_wiki()">
 <div id="top">
-	<h1 style="
+    <h1 style="
     background-color:  #40af7e;
     text-align:  center;
     padding-top: 1.5rem;
     color:  #ffffff;
     margin: 0rem 0rem 0rem 0rem;
     padding-bottom: 1rem;
+    width: 100%
 ">笔记</h1>
 </div>
-	
+    
 <div id="search" style="
     text-align: center;
     padding-top: 0.5rem;
@@ -29,8 +30,18 @@
     padding-bottom: 0.1rem;
     border-style: hidden;
     display: block;
+    width: 100%;
+    margin:0rem 0rem 0rem 0rem;
 ">
-<form name="search" onsubmit="return search_wiki()" method="get">
+    <script>        
+        $(document).keyup(function listenEnter(e) {//捕获文档对象的按键弹起事件
+        if (e.keyCode == 13) {
+            search_wiki();
+            //按键信息对象以参数的形式传递进来了
+        //此处编写用户敲回车后的代码
+        }
+    });
+    </script>
      <input type="text" id="plantname"  value="搜索" style="
     margin: auto;
     width: 96%;
@@ -40,14 +51,14 @@
     border-style: hidden;
     font-style: medium;
 ">
-    <input type="image" src="../img/search2@2x.png" style="
+    <input type="image" onfocus="listenEnter()" src="search2@2x.png" style="
     width: 1rem;
     height: 1rem;
     margin: 0.8rem 0rem 0rem -13.5rem;
     position: absolute;
     background-color: rgba(0,0,0,0);
 ">
-</form>
+
    
 </div>
 
@@ -58,20 +69,14 @@
     width: 98%;
     height: 4rem;
 ">
-    <div class="content" style="
-    background-color: #fff;
-    width: 98%;
-    height: 6.8rem;
-    border-width: 0.5rem;
-    border-style: solid;
-    border-color: #f1f1f1;
-">
-        <a href="www.baidu.com" style="
+    <ol id="list">
+    </ol>
+       <!--  <a href="www.baidu.com" style="
     background-color: #000000;
     font-size: 1rem;
     text-decoration: none;
 ">
-        <img src="../img/1.jpg" style="
+        <img src="1.jpg" style="
     float: left;
     width: 90px;
     height: 50px;
@@ -101,27 +106,26 @@
     color: #a0a0a0;
     font-size: x-small;
 ">2018/03/25</p>
-    </a>
-    </div>
+    </a> -->
 </div>
-	
-	
+    
+    
     
 <div id="tab" style="
     padding:  0rem;
-    border-bottom: 1px solid #bbbbbb;
-    position: absolute;
+    border-top: 1px solid #bbbbbb;
+    position: fixed;
     display: block;
-    height: 0rem;
+    height: 5.2rem;
     margin: 0rem 0rem 0rem 0rem;
-    top: 36.5rem;
-    border-top: 0rem;
     width: 100%;
+    background-color: #ffffff;
+    bottom:0.1rem; 
 ">
- <a href="../index/index.html" style="
+ <a href="index.html" style="
     text-decoration:  none;
 ">
-    <img class="index" src="../img/home@2x.png">
+    <img class="index" src="home@2x.png">
     <p style="
     position: absolute;
     margin: 3.8rem 0rem 0px 2.6rem;
@@ -129,10 +133,10 @@
 ">首页</p>
 </a>
    
-    <a href="../map/map.html" style="
+    <a href="map.html" style="
     text-decoration:  none;
 ">
-    <img class="nearby" src="../img/map@2x.png">
+    <img class="nearby" src="map@2x.png">
          <p style="
     position: absolute;
     margin: 3.8rem 0rem 0rem 10.9rem;
@@ -141,7 +145,7 @@
     </a>
    
    
-        <img class="note" src="../img/note2@2x.png">
+        <img class="note" src="note2@2x.png">
         <p style="
     position: absolute;
     margin: 3.8rem 0rem 0rem 19rem;
