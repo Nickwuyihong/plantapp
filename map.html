@@ -3,22 +3,23 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="
-    width=device-width,initial-scale=1.0">
+    width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="stylesheet" type="text/css" href="map.css">
 
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.8&key=771cfc92b931ffb84a466275a9b80880"></script> 
+    <!--<script src="map.js"></script>-->
 
-    <script src="map.js"></script>
-
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"> 
-
+	<script type="text/javascript" src="https://map.qq.com/api/js?v=2.exp&key=SVHBZ-GTSWP-A5UDL-LHB3B-C7WAT-V4B4N&libraries=drawing,geometry,autocomplete,convertor"></script>
+	
     <script src="vue.min.js"></script>
     <script src="jquery-3.3.1.min.js"></script>
 </head>
-<body>
+<body style="margin: 0rem;
+	padding: 0rem;
+	width: 100%;
+	">
 <div id="top">
     <h1 style="
     background-color:  #40af7e;
@@ -33,54 +34,104 @@
 
 
 
-<div id="container"></div> 
+<!--<div id="container" style="width:500px; height:300px"></div>-->
 
-
-
-    
+<!--  通过 iframe 嵌入前端定位组件，此处没有隐藏定位组件，使用了定位组件的在定位中视觉特效  -->
+    <iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no"
+    src="https://apis.map.qq.com/tools/geolocation?key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp&effect=zoom"></iframe>
+ 
+    <script type="text/JavaScript">
+        var loc;
+        var isMapInit = false;
+        //监听定位组件的message事件
+        window.addEventListener('message', function(event) {
+            loc = event.data; // 接收位置信息
+            console.log('location', loc);
+ 
+            if(loc  && loc.module == 'geolocation') { //定位成功,防止其他应用也会向该页面post信息，需判断module是否为'geolocation'
+                var markUrl = 'https://apis.map.qq.com/tools/poimarker' +
+                '?marker=coord:' + loc.lat + ',' + loc.lng +
+                ';title:我的位置;addr:' + (loc.addr || loc.city) +
+                '&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp';
+                //给位置展示组件赋值
+                document.getElementById('markPage').src = markUrl;
+            } else { //定位组件在定位失败后，也会触发message, event.data为null
+                alert('定位失败');
+            }
+ 
+            /* 另一个使用方式
+            if (!isMapInit && !loc) { //首次定位成功，创建地图
+                isMapInit = true;
+                createMap(event.data);
+            } else if (event.data) { //地图已经创建，再收到新的位置信息后更新地图中心点
+                updateMapCenter(event.data);
+            }
+            */
+        }, false);
+        //为防止定位组件在message事件监听前已经触发定位成功事件，在此处显示请求一次位置信息
+        document.getElementById("geoPage").contentWindow.postMessage('getLocation', '*');
+ 
+        //设置6s超时，防止定位组件长时间获取位置信息未响应
+        setTimeout(function() {
+            if(!loc) {
+                //主动与前端定位组件通信（可选），获取粗糙的IP定位结果
+            document.getElementById("geoPage")
+                .contentWindow.postMessage('getLocation.robust', '*');
+            }
+        }, 6000); //6s为推荐值，业务调用方可根据自己的需求设置改时间，不建议太短
+    </script>
+ 
+    <!-- 接收到位置信息后 通过 iframe 嵌入位置标注组件 -->
+    <iframe id="markPage" width="100%" height="70%" frameborder=0 scrolling="no" src=""></iframe>
     
     
 <div id="tab" style="
-    padding:  0rem;
     border-top: 1px solid #bbbbbb;
     position: fixed;
-    display: block;
+    display: flex;
     height: 5.2rem;
-    margin: 0rem 0rem 0rem 0rem;
     width: 100%;
     background-color: #ffffff;
-    bottom:0.1rem; 
+    bottom: 0rem;
+    z-index: 9999;
 ">
+ 
  <a href="index.html" style="
     text-decoration:  none;
+    margin: auto;
 ">
-    <img class="index" src="home@2x.png">
+ 	<img class="index" src="img/home@2x.png" style="margin: auto;">
     <p style="
-    position: absolute;
-    margin: 3.8rem 0rem 0rem 2.6rem;
-    color:  #777777;
+    	margin: 0rem 0rem 0rem 0.6rem;
+    color: #777777;
 ">首页</p>
-</a>
-   
-    <img class="nearby" src="map2@2x.png">
-         <p style="
-    position: absolute;
-    margin: 3.8rem 0rem 0rem 10.9rem;
-    color: green;
-">附近</p>
+ </a>
     
+
+   <a href="map.html" style="
+    text-decoration:  none;
+    margin: auto;
+">
+    <img class="nearby" src="img/map2@2x.png" style="margin: auto;">
+         <p style="
+    color: green;
+    margin: 0rem 0rem 0rem 0.6rem;
+">附近</p>
+  </a>  
    
     <a href="note.html" style="
     text-decoration:  none;
+    margin: auto;
 ">
-        <img class="note" src="note@2x.png">
+        <img class="note" src="img/note@2x.png" style="margin: auto;">
         <p style="
-    position: absolute;
-    margin:  3.8rem 0rem 0rem 19rem;
     color:  #777777;
+    margin: 0rem 0rem 0rem 0.6rem;
 ">笔记</p>
     </a>
     
 </div>
 
-</body></html>
+
+</body>
+</html>

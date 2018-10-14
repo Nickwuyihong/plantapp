@@ -42,7 +42,7 @@
         }
     });
     </script>
-     <input type="text" id="plantname"  value="搜索" style="
+     <input type="text" id="plantname"  placeholder="搜索" style="
     margin: auto;
     width: 96%;
     text-align: center;
@@ -50,8 +50,8 @@
     color: #a0a0a0;
     border-style: hidden;
     font-style: medium;
-">
-    <input type="image" onfocus="listenEnter()" src="search2@2x.png" style="
+" onfocus="">
+    <input type="image" onfocus="search_wiki()" src="img/search2@2x.png" style="
     width: 1rem;
     height: 1rem;
     margin: 0.8rem 0rem 0rem -13.5rem;
@@ -112,46 +112,49 @@
     
     
 <div id="tab" style="
-    padding:  0rem;
     border-top: 1px solid #bbbbbb;
     position: fixed;
-    display: block;
+    display: flex;
     height: 5.2rem;
-    margin: 0rem 0rem 0rem 0rem;
     width: 100%;
     background-color: #ffffff;
-    bottom:0.1rem; 
+    bottom: 0rem;
+    z-index: 9999;
 ">
+ 
  <a href="index.html" style="
     text-decoration:  none;
+    margin: auto;
 ">
-    <img class="index" src="home@2x.png">
+ 	<img class="index" src="img/home@2x.png" style="margin: auto;">
     <p style="
-    position: absolute;
-    margin: 3.8rem 0rem 0px 2.6rem;
-    color:  #777777;
-">首页</p>
-</a>
-   
-    <a href="map.html" style="
-    text-decoration:  none;
-">
-    <img class="nearby" src="map@2x.png">
-         <p style="
-    position: absolute;
-    margin: 3.8rem 0rem 0rem 10.9rem;
+    	margin: 0rem 0rem 0rem 0.6rem;
     color: #777777;
-">附近</p>
-    </a>
-   
-   
-        <img class="note" src="note2@2x.png">
-        <p style="
-    position: absolute;
-    margin: 3.8rem 0rem 0rem 19rem;
-    color: green;
-">笔记</p>
+">首页</p>
+ </a>
     
+
+   <a href="map.html" style="
+    text-decoration:  none;
+    margin: auto;
+">
+    <img class="nearby" src="img/map@2x.png" style="margin: auto;">
+         <p style="
+    color: #777777;
+    margin: 0rem 0rem 0rem 0.6rem;
+">附近</p>
+  </a>  
+   
+    <a href="note.html" style="
+    text-decoration:  none;
+    margin: auto;
+">
+        <img class="note" src="img/note2@2x.png" style="margin: auto;">
+        <p style="
+    color:  green;
+    margin: 0rem 0rem 0rem 0.6rem;
+">笔记</p>
+    </a>
     
 </div>
 

@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>使用数据自我展示</title>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/AMap.WalkingRender1120.css"/>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.9&key=771cfc92b931ffb84a466275a9b80880&plugin=AMap.Walking"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/WalkingRender1230.js"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        #panel {
+            z-index: 999;
+            position: absolute;
+            background-color: white;
+            max-height: 100%;
+            overflow-y: auto;
+            right: 0;
+            width: 280px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div id="panel"></div>
+<script type="text/javascript">
+	
+	$(document).keyup(function (e) {//捕获文档对象的按键弹起事件
+        if (e.keyCode == 13) {
+            searchtree();
+            //按键信息对象以参数的形式传递进来了
+        //此处编写用户敲回车后的代码
+        }
+    });
+	
+	
+     var map = new AMap.Map('container',{
+            layers: [//使用多个图层
+            // new AMap.TileLayer.Satellite(),
+            new AMap.TileLayer.RoadNet()
+        ],
+        zooms: [4,18],//设置地图级别范围
+        zoom: 13,
+        resizeEnable: true
+        });
+    
+
+        AMap.plugin(['AMap.Geolocation','AMap.CitySearch','AMap.Autocomplete','AMap.PlaceSearch'],function(){//异步同时加载多个插件
+      // var toolbar = new AMap.ToolBar();
+      // map.addControl(toolbar);
+
+
+      var geolocation = new AMap.Geolocation({
+    // 是否使用高精度定位，默认：true
+        enableHighAccuracy: true,
+    // 设置定位超时时间，默认：无穷大
+        timeout: 10000,
+    // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+        buttonOffset: new AMap.Pixel(10, 20),
+    //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+        zoomToAccuracy: true,     
+    //  定位按钮的排放位置,  RB表示右下
+        buttonPosition: 'RB'
+        })
+
+        map.addControl(geolocation)
+        geolocation.getCurrentPosition()
+        AMap.event.addListener(geolocation, 'complete', onComplete)
+        AMap.event.addListener(geolocation, 'error', onError)
+
+        function onComplete (data) {
+    // data是具体的定位信息
+            console.log(data);
+        }
+
+        function onError (data) {
+    // 定位出错
+            console.log(data);
+        }
+
+        var citySearch = new AMap.CitySearch()
+        citySearch.getLocalCity(function (status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+      // 查询成功，result即为当前所在城市信息
+        }
+
+
+ //输入提示
+        var autoOptions = {
+        input: "tipinput"
+    };
+    var auto = new AMap.Autocomplete(autoOptions);
+    var placeSearch = new AMap.PlaceSearch({
+        map: map
+    });  //构造地点查询类
+    AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+    function select(e) {
+        placeSearch.setCity(e.poi.adcode);
+        placeSearch.search(e.poi.name);  //关键字查询查询
+    }
+
+    });
+
+    //步行导航
+//  var walking = new AMap.Walking(); //构造路线导航类
+//  //根据起终点坐标规划步行路线，您如果想修改结果展现效果，请参考页面：https://lbs.amap.com/fn/css-style/
+//  var lnglat = "116.464996,39.971433";
+//  var lng = lnglat.match(/[^, ]+/g)
+//  //console.log(lnglat.match(/^\d+\.?\d*/g));
+//  console.log(lng[0]);
+//  console.log(lng[1]);
+//  walking.search(new AMap.LngLat(116.464996,39.971433), new AMap.LngLat(116.396034,39.923271), function(status, result){
+//  if(status === 'complete'){
+//    (new Lib.AMap.WalkingRender()).autoRender({
+//      data: result,
+//              map: map,
+//              panel: "panel"
+//    });
+//      }else{
+//        console.log(result)
+//      }
+//  });
+ })
+        
+        
+function searchtree(){
+        var walking = new AMap.Walking(); //构造路线导航类
+              walking.search(new AMap.LngLat(116.464910,39.971433), new AMap.LngLat(116.464996,39.971433), function(status, result){
+              if(status === 'complete'){
+              (new Lib.AMap.WalkingRender()).autoRender({
+                data: result,
+                map: map,
+                panel: "panel"
+              });
+            	}else{
+              		console.log(result)
+          		}
+        	});  
+}
+</script>
+</body>
+</html>

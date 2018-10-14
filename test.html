@@ -1,5 +1,62 @@
-ul>(li>a)*5	emmet
-normalize.css
-font-awesome
-ul li a 
-css栅栏布局
+
+<!doctype html>
+<html>
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>展云</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			.container{
+				position: fixed;
+				bottom: 0rem;
+				width:100%;
+				background:red;
+				overflow:hidden;
+				padding:10px 0 0 10px;
+			}
+			.container .item{
+				width:220px;
+				height:360px;
+				background:#666;
+				float:left;
+				margin:0 10px 10px 0;
+			}
+			h1,.container{
+				margin:10px;
+			}
+			dl{
+				width:100%;
+				background:#333;
+				line-height:25px;
+				color:#fff;
+				margin:30px 10px 30px;
+				padding:10px;
+			}
+		</style>
+
+	</head>
+ 
+	<body>
+		<h1>栅栏布局</h1>
+		
+		<dl>
+			<dt>盒子宽度算法</dt>
+			<dd>逆推法：根据内容和间距来判断我们的可视区域</dd>
+			<dd>正推法：已知外层盒子宽度：1120px 1140 1200 1180 960</dd>
+		</dl>
+ 
+		<div class="container">
+			<div class="item">220px * 5 + 10*5 +10; 实际尺寸是1160培训；<br /></div>
+			<div class="item">可视区域的宽度是1500</div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</body>
+</html>

@@ -13,6 +13,7 @@
 
 </head>
 <body onload="load_all_article()">
+	
 <div id="top">
     <h1>首页</h1>
 
@@ -26,8 +27,8 @@
     });
     </script>
     <!--form name="search" onsubmit="return search_article()" method="get"-->
-        <input type="text" value="请输入植物名称" id="plantname" onfocus="">
-        <input type="image" src="search@2x.png" onclick="search_article()" style="
+        <input type="text" placeholder="请输入植物名称" id="plantname" onfocus="">
+        <input type="image" src="img/search@2x.png" onclick="search_article()" style="
     width: 1rem;
     height: 1rem;
     margin: -1.9rem 0rem 0rem 0.2rem;
@@ -54,46 +55,47 @@
 
     
 <div id="tab" style="
-    padding:  0rem;
     border-top: 1px solid #bbbbbb;
     position: fixed;
-    display: block;
+    display: flex;
     height: 5.2rem;
-    margin: 0rem 0rem 0rem 0rem;
     width: 100%;
     background-color: #ffffff;
-    bottom:0.1rem; 
+    bottom: 0rem;
+    z-index: 9999;
 ">
  
-    <img class="index" src="home2@2x.png">
+ <a href="index.html" style="
+    text-decoration:  none;
+    margin: auto;
+">
+ 	<img class="index" src="img/home2@2x.png" style="margin: auto;">
     <p style="
-    position: absolute;
-    float: left;
-    margin: 3.8rem 0rem 0px 2.6rem;
+    	margin: -0.3rem 0rem 0rem 0.6rem;
     color: green;
 ">首页</p>
-
+ </a>
+    
 
    <a href="map.html" style="
     text-decoration:  none;
+    margin: auto;
 ">
-    <img class="nearby" src="map@2x.png">
+    <img class="nearby" src="img/map@2x.png" style="margin: auto;">
          <p style="
-    position:  absolute;
-    margin: 3.8rem 0rem 0rem 10.9rem;
     color: #777777;
+    margin: -0.3rem 0rem 0rem 0.6rem;
 ">附近</p>
   </a>  
    
     <a href="note.html" style="
     text-decoration:  none;
+    margin: auto;
 ">
-        <img class="note" src="note@2x.png">
+        <img class="note" src="img/note@2x.png" style="margin: auto;">
         <p style="
-    position:  absolute;
-    margin:  3.8rem 0rem 0rem 19rem;
     color:  #777777;
-    float: right;
+    margin: -0.3rem 0rem 0rem 0.6rem;
 ">笔记</p>
     </a>
     
